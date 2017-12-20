@@ -23,3 +23,17 @@
     <%= @link.get_downvotes.size %>
   <% end %>
 </div>
+
+<h3 class="comments_title" id="comments_title">
+  <%= @link.comments.count%> Comments
+</h3>
+<div id="comments">
+  <%= render "comments/comment" %>
+</div>
+<%= simple_form_for [@link, Comment.new] do |f| %>
+  <div class="form-group">
+    <%= f.text_area :body, class: "form-control", size: 50  %>
+  </div>
+  <br>
+  <%= f.submit "Add Comment", class: "btn btn-primary" %>
+<% end %>
